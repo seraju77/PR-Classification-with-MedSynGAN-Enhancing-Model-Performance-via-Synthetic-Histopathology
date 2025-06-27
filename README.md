@@ -32,6 +32,8 @@ Training Metrics
 | Optimizer     | Adam             |
 | Loss Function | CrossEntropy     |
 
+Generator Design![download](https://github.com/user-attachments/assets/602220b7-df51-40d7-a146-a9557548503f)
+
 📊 Performance Evaluation
 🔹 Training Curves
 <p align="center"> <img src="figures/training_curves.png" alt="Training Loss and Accuracy" width="600"/> </p>
@@ -42,11 +44,11 @@ Training Metrics
 | Actual PR− | 35            | 2             |
 | Actual PR+ | 3             | 40            |
 
+![download](https://github.com/user-attachments/assets/c42a1cb0-7655-4b49-83e7-7a2608c463d1)
 
 🎨 Model 2: MedSynGAN for Data Synthesis
 To mitigate dataset imbalance and increase generalizability, a Conditional GAN (cGAN) named MedSynGAN was introduced.
 
-Generator Design
 -Noise vector + label embedding → FC → Reshape → 3 Transpose Convs → 128x128 RGB output
 -Uses ReLU activations and Tanh for output normalization.
 
@@ -57,7 +59,8 @@ Discriminator Design
 | Component     | Description                     |
 | ------------- | ------------------------------- |
 | Input Size    | 100-dim noise + label embedding |
-| Output Image  | 3x128x128                       |
+| Output Image  | 3x128x128       
+                |
 | Optimizer     | Adam (`lr=0.0002`)              |
 | Loss Function | Binary Cross-Entropy            |
 
@@ -65,6 +68,14 @@ Discriminator Design
 -The SimpleCNN achieves strong baseline classification accuracy for PR-stained IHC slides.
 -MedSynGAN enables effective synthetic image generation, which is promising for data augmentation in future experiments.
 -Visualizations such as confusion matrices and ROC curves provide transparency into the model’s behavior.
+
+
+![download](https://github.com/user-attachments/assets/b83016ad-9134-4df5-9c4f-26599b35eaa0)
+
+The Grad-CAM Visualization of the PR images:
+
+![download](https://github.com/user-attachments/assets/e5d0de74-8f9d-48ec-b8e6-350a42d65f0e)
+
 
 🔁 Future Work
 -Integrate synthetic samples during CNN training for performance benchmarking.
